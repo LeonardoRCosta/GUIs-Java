@@ -2,6 +2,7 @@ package fiap;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 public class GUIUsuario extends JFrame{
@@ -20,11 +21,11 @@ public class GUIUsuario extends JFrame{
 		setLayout(null);
 		
 		// criando objetos para o formulário
-		lbNome = new JLabel("Nome:");
-		lbEndereco = new JLabel("Endereço:");
-		lbNumero = new JLabel("Número:");
-		lbBairro = new JLabel("Bairro:");
-		lbCidade = new JLabel("Cidade: ");
+		lbNome = new JLabel("Nome:", JLabel.RIGHT);
+		lbEndereco = new JLabel("Endereço:", JLabel.RIGHT);
+		lbNumero = new JLabel("Número:", JLabel.RIGHT);
+		lbBairro = new JLabel("Bairro:", JLabel.RIGHT);
+		lbCidade = new JLabel("Cidade: ", JLabel.RIGHT);
 		tfNome = new JTextField();
 		tfEndereco= new JTextField();
 		tfNumero= new JTextField();
@@ -34,18 +35,18 @@ public class GUIUsuario extends JFrame{
 		btCancelar = new JButton("Cancelar");
 		
 		// definindo tamanho e posição dos objetos
-		lbNome.setBounds(35,20,80,25);
-		tfNome.setBounds(85,20,180,25);
-		lbEndereco.setBounds(14,70,80,25);
-		tfEndereco.setBounds(85,70,280,25);
-		lbNumero.setBounds(23,120,80,25);
-		tfNumero.setBounds(85,120,40,25);
-		lbBairro.setBounds(135,120,80,25);
-		tfBairro.setBounds(185,120,180,25);
-		lbCidade.setBounds(27,170,80,25);
-		tfCidade.setBounds(85,170,180,25);
-		btSalvar.setBounds(80,220,100,25);
-		btCancelar.setBounds(185,220,100,25);
+		lbNome.setBounds(10,30,60,25);
+		tfNome.setBounds(80,30,180,25);
+		lbEndereco.setBounds(10,75,60,25);
+		tfEndereco.setBounds(80,75,290,25);
+		lbNumero.setBounds(10,120,60,25);
+		tfNumero.setBounds(80,120,50,25);
+		lbBairro.setBounds(140,120,60,25);
+		tfBairro.setBounds(210,120,160,25);
+		lbCidade.setBounds(10,165,60,25);
+		tfCidade.setBounds(80,165,180,25);
+		btSalvar.setBounds(90,220,100,25);
+		btCancelar.setBounds(195,220,100,25);
 		
 		// adicionando os objetos ao formulário
 		add(lbNome);
@@ -71,9 +72,16 @@ public class GUIUsuario extends JFrame{
 		
 		btSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
 			}
 		});
+	}
+
+	public void abrir() {
+		GUIUsuario cliente = new GUIUsuario();
+		cliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+		cliente.setLocation((tela.width - cliente.getSize().width) / 2, (tela.height - cliente.getSize().height) / 2);
+		cliente.setVisible(true);
 	}
 }

@@ -60,7 +60,8 @@ public class GUILogin extends JFrame{
 				String senha = String.valueOf(pfSenha.getPassword());
 				if (tfLogin.getText().equals("fiap") && senha.equals("123abc")) {
 					setVisible(false);
-					JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
+					GUIUsuario frame = new GUIUsuario();
+					frame.abrir();
 				} else {
 					JOptionPane.showMessageDialog(null, "Login e/ou senha inválidos");
 					
