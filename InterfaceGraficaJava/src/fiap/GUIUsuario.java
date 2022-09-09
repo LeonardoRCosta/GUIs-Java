@@ -4,21 +4,12 @@ import javax.swing.*;
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
-public class GUICliente extends JFrame{
-	private JLabel lbNome;
-	private JLabel lbEndereco;
-	private JLabel lbNumero;
-	private JLabel lbBairro;
-	private JLabel lbCidade;
-	private JTextField tfNome;
-	private JTextField tfEndereco;
-	private JTextField tfNumero;
-	private JTextField tfBairro;
-	private JTextField tfCidade;
-	private JButton btSalvar;
-	private JButton btCancelar;
+public class GUIUsuario extends JFrame{
+	private JLabel lbNome, lbEndereco, lbNumero, lbBairro, lbCidade;
+	private JTextField tfNome, tfEndereco, tfNumero, tfBairro, tfCidade;
+	private JButton btSalvar, btCancelar;
 	
-	public GUICliente() {
+	public GUIUsuario() {
 		inicializarComponentes();
 		definirEventos();
 	}
