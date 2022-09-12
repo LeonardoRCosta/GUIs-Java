@@ -3,6 +3,7 @@ package fiap;
 import javax.swing.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class GUICarro extends JFrame{
     private JLabel lbPlaca, lbCor, lbDescricao;
     private JTextField tfPlaca, tfCor, tfDescricao;
