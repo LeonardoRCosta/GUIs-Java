@@ -1,15 +1,19 @@
 package fiap;
 
 import javax.swing.*;
+import javax.swing.event.*;
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
 public class GUICliente2 extends JPanel{
-	private JLabel lbNome, lbEndereco, lbNumero, lbBairro, lbCidade, lbSexo, lbAparelhos;
+	private JLabel lbNome, lbEndereco, lbNumero, lbBairro, lbCidade, lbSexo, lbAparelhos, lbImagem;
 	private JTextField tfNome, tfEndereco, tfNumero, tfBairro, tfCidade;
 	private JRadioButton rbMasculino, rbFeminino;
 	private ButtonGroup buttonGroup;
 	private JCheckBox ckCelular, ckVideogame, ckComputador, ckTablet;
+	private JList<String> liAvatares;
+	private ImageIcon imagem;
+	private JScrollPane sp;
 	private JButton btSalvar, btCancelar;
 	
 	public GUICliente2() {
@@ -42,6 +46,14 @@ public class GUICliente2 extends JPanel{
 		ckComputador = new JCheckBox("Computador");
 		ckVideogame = new JCheckBox("Video-Game");
 		ckTablet= new JCheckBox("Tablet");
+		String[] avatares = new String[10];
+		for (int i = 0; i < avatares.length; i++) {
+			avatares[i] = "Foto" + (i + 1);
+		}
+		liAvatares = new JList<String>(avatares);
+		imagem = new ImageIcon();
+		lbImagem = new JLabel(imagem);
+		sp = new JScrollPane(liAvatares);
 		btSalvar = new JButton("Salvar");
 		btCancelar = new JButton("Cancelar");
 		
@@ -65,6 +77,8 @@ public class GUICliente2 extends JPanel{
 		ckVideogame.setBounds(155, 390, 100, 25);
 		ckComputador.setBounds(10, 435, 100, 25);
 		ckTablet.setBounds(155, 435, 100, 25);
+		sp.setBounds(400, 30, 70, 150);
+		lbImagem.setBounds(500, 30, 180, 180);
 		btSalvar.setBounds(90,480,100,25);
 		btCancelar.setBounds(195,480,100,25);
 		
@@ -87,11 +101,20 @@ public class GUICliente2 extends JPanel{
 		add(ckVideogame);
 		add(ckComputador);
 		add(ckTablet);
+		add(sp);
+		add(lbImagem);
 		add(btSalvar);
 		add(btCancelar);
 	}
 	
 	private void definirEventos() {
+		liAvatares.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				imagem = new ImageIcon(getClass().getResource("Imagens/" + liAvatares.getSelectedValue() + ".png"));
+				lbImagem.setIcon(imagem);
+			}
+		});
+		
 		btCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -125,7 +148,7 @@ public class GUICliente2 extends JPanel{
 				if(ckTablet.isSelected()) {
 					dados += "Tablet\n";
 				}
-				JOptionPane.showMessageDialog(null, dados);
+				JOptionPane.showMessageDialog(null, dados, "Informações", JOptionPane.INFORMATION_MESSAGE, imagem);
 			}
 		});
 	}
